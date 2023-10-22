@@ -1,0 +1,147 @@
+Se caso eu fosse fazer uma calculadora do PC, onde não daria pra apagar os operadores: 
+import { useEffect, useState } from "react";
+import Numeros from "../Numeros/Numeros";
+import classes from "./Calculadora.module.css";
+import Operacoes from "../Operacoes/Operacoes";
+import { HiMiniBackspace } from "react-icons/hi2";
+const Calculadora = () => {
+  const numeros = ["7", "8", "9", "4", "5", "6", "1", "2", "3", ".", "0"];
+  const operacoes = [
+    { simbolo: "+", operador: "+" },
+    { simbolo: "-", operador: "-" },
+    { simbolo: "÷", operador: "/" },
+    { simbolo: "x", operador: "*" },
+  ];
+
+  // Dois estados diferentes onde um é o que aparece no visor, o outro acontece pelos "fundos", pois a conta não aceita os simbolos utilizados no visor.
+  const [contaString, setContaString] = useState("");
+  const [contaStringVerdadeira, setContaStringVerdadeira] = useState("");
+
+  // Conta anterior para mostrar ao usuario que conta foi realizada.
+  const [contaAnterior, setContaAnterior] = useState("");
+
+  // Estado booleano que faz com que o 0 sempre apareça caso não esteja exibindo nenhum número.
+  const [apareceZero, setApareceZero] = useState(true);
+
+  // Estado booleano que faz com que quando a conta seja realizade seu conteúdo muda patra true.
+  const [contaRealizada, setContaRealizada] = useState(false);
+
+  // Estado booleano que faz com que quando seja falso impede a adição de outro operador a frente.
+  const [ativarOperador, setAtivarOperador] = useState(true);
+
+  // Resultado da operação em number vinda de "contaStringVerdadeira"
+  const [resultado, setResultado] = useState(Number);
+
+  //Resultado da operação em string vinda de "contaStringVerdadeira"
+  const [resultadoString, setResultadoString] = useState(String);
+
+  // useEffect(() => {fazIsso()},[quandoIssoEhAlterado])
+  // Ele sempre irá setar o resultado quando "resultado, contaRealizada, resultadoString, contaString" mudarem, pois assim o valor sempre será alterado.
+  useEffect(() => {
+    setResultadoString(String(resultado));
+    // Se a minha conta foi realizada "contaRealizada === true" ele seta a minha contaString com o resultado usando eval() , que faz a conta.
+    {
+      contaRealizada ? setContaString(eval(resultadoString)) : null;
+    }
+  }, [resultado, contaRealizada, resultadoString, contaString]);
+  return (
+    <div className={classes.calculadora_pai}>
+      <div className={classes.visor}>
+        <div className={classes.numeros_visor}>
+          <span>
+            {/* Se a minha "contaRealizada" for falso, e se o "apareceZero" foi verdadeiro ou a minha "contaString" for vazia, ele aparecerá o 0*/}
+            {!contaRealizada
+              ? apareceZero || contaString === ""
+                ? "0"
+                : !ativarOperador
+                ? contaString
+                : contaAnterior
+              : // Caso contrário ele exibirá o resultado, mostrando a conta anterior e o resultado em string
+                `${contaAnterior} = ${resultadoString}`}
+          </span>
+        </div>
+      </div>
+      <div className={classes.operacoes}>
+        <div className={classes.numeros}>
+          {/* Faz um map nso meus números */}
+          {numeros.map((numero, index): JSX.Element => {
+            // Função para adicionar um número.
+            const adicionarNumero = () => {
+              setContaString(contaString + numero);
+              setContaStringVerdadeira(contaStringVerdadeira + numero);
+              setAtivarOperador(false);
+              setApareceZero(false);
+            };
+            // Retorna o elemento números.
+            return (
+              <Numeros
+                key={index}
+                setNumero={adicionarNumero}
+                numero={numero}
+              />
+            );
+          })}
+
+          {/* Botão de apagar, ele faz as duas contas apagarem seu último caractere*/}
+          <button
+            onClick={() => {
+              if (!ativarOperador) {
+                setContaString(
+                  contaString.substring(0, contaString.length - 1)
+                );
+                setContaStringVerdadeira(
+                  contaString.substring(0, contaString.length - 1)
+                );
+              }
+            }}
+            className={classes.btn_apagar}
+          >
+            <HiMiniBackspace />
+          </button>
+        </div>
+        <div className={classes.linha_vertical}></div>
+        <div className={classes.Operacoes_container}>
+          {/* Botão do resultado, ele seta o resultado dando um eval na conta verdadeira que contém os simbolos certos, 
+          seta a contaAnterior com a conta atual e seta a contaRealizada como verdadeira*/}
+          <button
+            className={classes.res_botao}
+            onClick={() => {
+              setResultado(eval(contaStringVerdadeira));
+              setContaAnterior(contaString);
+              setContaRealizada(true);
+            }}
+          >
+            =
+          </button>
+          {/* Faz um map nas minhas operacoes */}
+          {operacoes.map((operacao, index): JSX.Element => {
+            // Função de ativar a operação,
+            const ativarOperacao = () => {
+              setContaAnterior(`${contaString}${operacao.simbolo}`);
+              setAtivarOperador(true);
+              setContaRealizada(false);
+              // Quando minha operação não está ativa, é impossivel adicionar outro operador a frente, só quando ativarOperacao for utilizada, que será quando o operador será ativado, que
+              !ativarOperador
+                ? (setContaString(`${contaString}${operacao.simbolo}`),
+                  setContaStringVerdadeira(
+                    `${contaStringVerdadeira}${operacao.operador} `
+                  ))
+                : null;
+            };
+            return (
+              <div>
+                <Operacoes
+                  ativarOperacao={ativarOperacao}
+                  key={index}
+                  operacao={operacao.simbolo}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Calculadora;

@@ -1,0 +1,192 @@
+.calculadora_pai {
+  background-color: rgb(66, 63, 63);
+  border: solid #333333;
+  border-radius: 50px;
+  width: 30vw;
+  height: 95vh;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.visor {
+  width: 95%;
+  max-width: 600px;
+  height: 20%;
+  background-color: #333333;
+  border: solid #333333;
+  border-radius: 50px;
+  display: flex;
+  color: #fff;
+  justify-content: flex-end;
+  align-items: end;
+  flex-direction: column;
+  padding: 10px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  letter-spacing: 0.3rem;
+}
+
+.numeros_visor {
+  max-width: 90%;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-right: 15px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
+}
+
+.numeros_visor::-webkit-scrollbar {
+  width: 12px;
+  height: 10px;
+}
+
+.numeros_visor::-webkit-scrollbar-track {
+  background: #242424;
+  border-radius: 30px;
+}
+
+.numeros_visor::-webkit-scrollbar-thumb {
+  background-color: rgb(68, 83, 114);
+  border-radius: 20px;
+}
+
+.resultado {
+  max-width: 90%;
+  margin-right: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.visor p {
+  font-size: 4.3vh;
+  text-align: right;
+  line-height: 1px;
+}
+
+.operacoes {
+  display: flex;
+  border: solid #333333;
+  border-radius: 50px;
+  width: 95%;
+  padding: 15px;
+  height: 70%;
+  background-color: #333333;
+}
+
+.numeros {
+  height: 100%;
+  width: 400px;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.Operacoes_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 140px;
+}
+
+.res_botao {
+  background-color: rgb(68, 83, 114);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 120px;
+  height: 100px;
+  outline: none;
+  border-radius: 20px;
+  border: solid 1px rgb(50, 107, 214);
+  font-size: 25px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  transition: background-color 0.3s;
+}
+
+.res_botao:hover {
+  background-color: rgb(50, 107, 214);
+  cursor: pointer;
+}
+
+.porcentagem_botao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 95%;
+  height: 100px;
+  outline: none;
+  border-radius: 20px;
+  border: solid 1px;
+  font-size: 30px;
+  transition: background-color 0.3s;
+  background-color: rgb(82, 77, 77);
+  color: #fff;
+}
+
+.porcentagem_botao:hover {
+  background-color: #d1d1d1;
+  cursor: pointer;
+}
+
+.linha_vertical {
+  height: 100%;
+  border-right: 1px solid rgb(105, 105, 105);
+  margin-right: 6px;
+}
+
+.btn_apagar {
+  background-color: rgb(141, 49, 49);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 120px;
+  height: 100px;
+  outline: none;
+  border-radius: 20px;
+  border: solid 1px red;
+  font-size: 25px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  transition: background-color 0.3s;
+}
+
+.btn_apagar:hover {
+  background-color: rgb(172, 39, 39);
+  cursor: pointer;
+}
+
+.base_operacoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 100px;
+  outline: none;
+  border-radius: 20px;
+  border: solid 1px;
+  font-size: 30px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  transition: background-color 0.3s;
+  background-color: rgb(82, 77, 77);
+  color: #fff;
+}
+
+.base_operacoes:hover {
+  background-color: #d1d1d1;
+  cursor: pointer;
+}
