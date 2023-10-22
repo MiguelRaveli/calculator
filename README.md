@@ -1,27 +1,26 @@
-# React + TypeScript + Vite
+# Calculadora Simples
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bem-vindo à **Calculadora**! Esta é uma aplicação projetada para simplificar seus cálculos diários, fornecendo operações matemáticas básicas, como soma, subtração, multiplicação, divisão e potenciação.
 
-Currently, two official plugins are available:
+## Funcionalidades Principais
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Realize cálculos de adição, subtração, multiplicação, divisão e potenciação.
+- Interface intuitiva e fácil de usar.
+- Adequado para cálculos simples e rápidos.
 
-## Expanding the ESLint configuration
+## Como Usar
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Acesse a **Calculadora** em [https://miguelraveli.github.io/calculator/].
 
-- Configure the top-level `parserOptions` property like this:
+2. Digite os números e selecione a operação desejada (adição, subtração, multiplicação, divisão ou potenciação).
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+3. A calculadora exibirá o resultado do cálculo.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+4. Utilize a calculadora sempre que precisar de cálculos matemáticos rápidos e simples.
+
+## Contato
+
+Se você tiver alguma dúvida, sugestão ou problema, não hesite em entrar em contato conosco em [miguel.raveli.g@gmail.com].
+
+Facilite suas operações matemáticas diárias com a Calculadora Simples!
+
